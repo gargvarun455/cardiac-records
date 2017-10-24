@@ -1,0 +1,11 @@
+{
+    "server": {
+        "server_port": "3000"
+    },
+    "database": {
+        "db_url": "mongodb://admin:21631540@cardiac-records-db-shard-00-00-w5obs.mongodb.net:27017,cardiac-records-db-shard-00-01-w5obs.mongodb.net:27017,cardiac-records-db-shard-00-02-w5obs.mongodb.net:27017/cardiac-records-db?ssl=true&replicaSet=cardiac-records-db-shard-0&authSource=admin"
+    },
+    "hashing": {
+        "salt_factor": 11
+    }
+}
