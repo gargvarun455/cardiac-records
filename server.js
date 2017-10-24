@@ -15,7 +15,7 @@ app.use(bodyparser.json());
 
 app.use('/api', api);
 app.get('*', (req, res)=>{
-    res.sendFile(path.join(__dirname, 'web/dist/index.html'));
+    res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
 app.listen(config.server.server_port, (err) => {
