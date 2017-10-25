@@ -1,7 +1,11 @@
-.welcome-block{
-    padding: 20px;
-}
-
 .welcome-text{
     font-size: 18px;
+}
+
+.home-css{
+    margin-top: 80px;;
+}
+
+.home-panel{
+    padding: 0px 10px 10px;
 }

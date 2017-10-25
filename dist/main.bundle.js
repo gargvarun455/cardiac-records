@@ -77,7 +77,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".header{\n    font-weight: bolder;\n    font-size: 16px;\n}\n\n.header-brand{\n    font-size: 20px;\n    margin-right: 10px;\n}\n\n.footer{\n    min-height: 20px;\n    padding: 5px;\n    font-size: 16px;\n    background: rgb(211, 200, 200);\n    font-style: italic;\n}", ""]);
 
 // exports
 
@@ -90,7 +90,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default\">\n    <div class=\"container\">\n        <div class=\"navbar-header\">\n            <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#header-links\">\n                <span class=\"sr-only\">Toggle navigation</span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n            </button>\n            <a class=\"navbar-brand\" routerLink=\"/\">Dr Ashwani's Archive</a>            \n        </div>\n        <div class=\"collapse navbar-collapse\" id=\"header-links\">\n            <ul class=\"nav navbar-nav\">\n                <li routerLinkActive=\"active\">\n                    <a routerLink=\"/home\">Home</a>\n                </li>\n                <li routerLinkActive=\"active\">\n                    <a routerLink=\"/contact\">Contact Us</a>\n                </li>\n            </ul>\n        </div>\n    </div>\n</nav>\n<div>\n    <router-outlet></router-outlet>\n</div>"
+module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top header\">\n    <div class=\"container\">\n        <div class=\"navbar-header\">\n            <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#header-links\">\n                <span class=\"sr-only\">Toggle navigation</span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n            </button>\n            <a class=\"navbar-brand header-brand\" routerLink=\"/\">Dr Ashwani's Archive</a>\n        </div>\n        <div class=\"collapse navbar-collapse\" id=\"header-links\">\n            <ul class=\"nav navbar-nav\">\n                <li routerLinkActive=\"active\">\n                    <a routerLink=\"/home\">Home</a>\n                </li>\n                <li routerLinkActive=\"active\">\n                    <a routerLink=\"/contact\">Contact Us</a>\n                </li>\n            </ul>\n        </div>\n    </div>\n</nav>\n<div>\n    <router-outlet></router-outlet>\n</div>\n<nav class=\"navbar navbar-default navbar-fixed-bottom footer\">\n    <div class=\"container\">\n        <div class=\"navbar-right font-weight-bold\">\n            © Created & Maintained by\n            <a href=\"https://www.linkedin.com/in/varun-garg-59425467/\" target=\"_blank\">Varun Garg</a>\n        </div>\n    </div>\n</nav>"
 
 /***/ }),
 
@@ -257,7 +257,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".welcome-block{\n    padding: 20px;\n}\n\n.welcome-text{\n    font-size: 18px;\n}", ""]);
+exports.push([module.i, ".welcome-text{\n    font-size: 18px;\n}\n\n.home-css{\n    margin-top: 80px;;\n}\n\n.home-panel{\n    padding: 0px 10px 10px;\n}", ""]);
 
 // exports
 
@@ -270,7 +270,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-xs-12 col-sm-6 welcome-block\">\n      <h3 class=\"text-center font-weight-bold\">Welcome to Dr. Ashwani's Archive</h3>\n      <div class=\"hidden-xs\">\n        <img src=\"../../assets/images/cardiac.jpg\" class=\"img-responsive center-block\" alt=\"Cardiac Image\">\n      </div>\n      <h5 class=\"text-justify text-center welcome-text\">This is the archive of the patients with or without cardiac history. You can register with us and create a profile\n        on this website. We will monitor your stats and guide you regarding your cardiac health. You can also post any queries\n        and we will guide you.</h5>\n    </div>\n    <div class=\"col-xs-12 col-sm-6\">\n      <router-outlet></router-outlet>\n    </div>\n  </div>\n</div>"
+module.exports = "<div class=\"container home-css\">\n  <div class=\"row\">\n    <div class=\"col-xs-12 col-sm-8 text-center\">\n      <h3 class=\"font-weight-bold well well-sm\">Welcome to Dr. Ashwani's Archive</h3>\n      <div class=\"img-responsive hidden-xs\">\n        <img src=\"../../assets/images/cardiac.jpg\" class=\"img-responsive center-block\" alt=\"Cardiac Image\">\n      </div>\n      <h5 class=\"text-justify panel-body hidden-xs welcome-text\">This is the archive of the patients with or without cardiac history. You can register with us and create a profile\n        on this website. We will monitor your stats and guide you regarding your cardiac health. You can also post any queries\n        and we will guide you.</h5>\n    </div>\n    <div class=\"col-xs-12 col-sm-4\">\n      <router-outlet></router-outlet>\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -318,7 +318,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".login-form{\n    padding: 0px 10px 10px;\n    margin-top: 20px;\n}\n\n.login-title{\n    text-align: center;\n    margin-bottom: 30px;  \n    font-size: 30px;\n}\n\n.form-group{\n    margin-bottom: 15px;\n}\n\n.button-login{\n    margin: 25px 0px 10px 0px;\n}\n\n.button-register{\n    margin: 25px 10px 10px 10px;\n    align: center;\n}\n\ninput{\n    height: 50px\n}", ""]);
 
 // exports
 
@@ -331,7 +331,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"login-page\">\n    <div class=\"form\">\n      <form class=\"login-form\">\n        <input type=\"text\" placeholder=\"username\"/>\n        <input type=\"password\" placeholder=\"password\"/>\n        <button>login</button>\n        <p class=\"message\">Not registered? <a href=\"#\">Create an account</a></p>\n      </form>\n    </div>\n  </div>"
+module.exports = "<form class=\"panel panel-primary login-form\">\n  <h3 class=\"login-title\">Login</h3>\n  <div class=\"form-group\">\n    <!-- <label for=\"username\">Username</label> -->\n    <input type=\"username\" class=\"form-control\" id=\"username\" placeholder=\"Username\">\n  </div>\n  <div class=\"form-group\">\n    <!-- <label for=\"pwd\">Password</label> -->\n    <input type=\"password\" class=\"form-control\" id=\"pwd\" placeholder=\"Password\">\n  </div>\n  <button type=\"submit\" class=\"btn btn-primary btn-lg btn-block button-login\">Login</button>\n</form>\n<div class=\"text-center\">\n    <h5>Doesn't have an account? <a routerLink=\"/home/register\"><strong><ins>Register Now</ins></strong></a></h5>\n</div>"
 
 /***/ }),
 
@@ -379,7 +379,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".register-form{\n    padding: 0px 10px 10px;\n    margin-top: 20px;\n}\n\n.register-title{\n    text-align: center;\n    margin-bottom: 30px;  \n    font-size: 30px;\n}\n\n.form-group{\n    margin-bottom: 15px;\n}\n\n.button-register{\n    margin: 25px 0px 10px 0px;\n}\n\ninput{\n    height: 50px\n}", ""]);
 
 // exports
 
@@ -392,7 +392,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/register/register.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  register works!\n</p>\n"
+module.exports = "<form class=\"panel panel-primary register-form\">\n  <h3 class=\"font-weight-bold register-title\">Register</h3>\n  <div class=\"form-group\">\n    <!-- <label for=\"username\">Username</label> -->\n    <input type=\"username\" class=\"form-control\" id=\"username\" placeholder=\"Username\">\n  </div>\n  <div class=\"form-group\">\n    <!-- <label for=\"pwd\">Password</label> -->\n    <input type=\"password\" class=\"form-control\" id=\"pwd\" placeholder=\"Password\">\n  </div>\n  <div class=\"form-group\">\n    <!-- <label for=\"pwd\">Password</label> -->\n    <input type=\"password\" class=\"form-control\" id=\"con-pwd\" placeholder=\"Confirm Password\">\n  </div>\n  <button type=\"submit\" class=\"btn btn-primary btn-lg btn-block button-register\">Register</button>\n</form>\n<div class=\"text-center\">\n  <h5>Already have an account?\n    <strong>\n      <ins>\n        <a routerLink=\"/home/login\">Log In</a>\n      </ins>\n    </strong>\n  </h5>\n</div>"
 
 /***/ }),
 

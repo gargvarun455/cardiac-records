@@ -1,0 +1,27 @@
+.login-form{
+    padding: 0px 10px 10px;
+    margin-top: 20px;
+}
+
+.login-title{
+    text-align: center;
+    margin-bottom: 30px;  
+    font-size: 30px;
+}
+
+.form-group{
+    margin-bottom: 15px;
+}
+
+.button-login{
+    margin: 25px 0px 10px 0px;
+}
+
+.button-register{
+    margin: 25px 10px 10px 10px;
+    align: center;
+}
+
+input{
+    height: 50px
+}
