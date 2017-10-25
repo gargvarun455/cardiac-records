@@ -257,7 +257,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".welcome-text{\n    font-size: 18px;\n}\n\n.home-css{\n    margin-top: 80px;;\n}\n\n.home-panel{\n    padding: 0px 10px 10px;\n}", ""]);
+exports.push([module.i, ".welcome-text{\n    font-size: 18px;\n}\n\n.home-css{\n    margin-top: 80px;\n    margin-bottom: 80px;\n}\n\n.home-panel{\n    padding: 0px 10px 10px;\n}", ""]);
 
 // exports
 
