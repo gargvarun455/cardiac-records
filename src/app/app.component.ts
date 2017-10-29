@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-root',
@@ -10,4 +11,11 @@ import { ContactComponent } from './contact/contact.component';
 })
 export class AppComponent {
   title = 'app';
+
+  constructor(auth: AuthService) {
+    console.log(auth.getLoggedInStatus());
+    auth.setLoggedInStatus(true);
+    console.log(auth.getLoggedInStatus());
+  }
+
 }
