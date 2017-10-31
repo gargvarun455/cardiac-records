@@ -1,12 +1,32 @@
 <form class="panel panel-primary login-form">
   <h3 class="login-title">Login</h3>
   <div class="form-group">
-    <!-- <label for="username">Username</label> -->
-    <input type="username" class="form-control" id="username" placeholder="Username">
+    <input required minlength="5" maxlength="15" pattern="[a-zA-Z][a-zA-Z0-9]+" ngModel #username="ngModel" name="username" type="username" class="form-control" id="username" placeholder="Username" (change)="log(username)">
+    <div class="alert alert-danger" *ngIf="username.touched && !username.valid">
+      <div *ngIf="username.errors.required">
+        Username is required
+      </div>
+      <div *ngIf="username.errors.minlength || username.errors.maxlength">
+        Username length should be between 5 and 15
+      </div>
+      <div *ngIf="username.errors.pattern">
+        Username pattern doesn't match
+      </div>
+    </div>
   </div>
   <div class="form-group">
-    <!-- <label for="pwd">Password</label> -->
-    <input type="password" class="form-control" id="password" placeholder="Password">
+    <input required minlength="8" maxlength="15" ngModel #password="ngModel" name="password" type="password" class="form-control" id="password" placeholder="Password">
+    <div class="alert alert-danger" *ngIf="password.touched && !password.valid">
+      <div *ngIf="password.errors.required">
+        Username is required
+      </div>
+      <div *ngIf="password.errors.minlength || password.errors.maxlength">
+        Username length should be between 5 and 15
+      </div>
+      <div *ngIf="password.errors.pattern">
+        Username pattern doesn't match
+      </div>
+    </div>
   </div>
   <button type="submit" class="btn btn-primary btn-lg btn-block button-login" (click)="userLogin()">Login</button>
 </form>
