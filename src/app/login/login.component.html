@@ -8,8 +8,14 @@
     <!-- <label for="pwd">Password</label> -->
     <input type="password" class="form-control" id="pwd" placeholder="Password">
   </div>
-  <button type="submit" class="btn btn-primary btn-lg btn-block button-login">Login</button>
+  <button type="submit" class="btn btn-primary btn-lg btn-block button-login" on-click="userLogin()">Login</button>
 </form>
 <div class="text-center">
-    <h5>Doesn't have an account? <a routerLink="/home/register"><strong><ins>Register Now</ins></strong></a></h5>
+  <h5>Doesn't have an account?
+    <a routerLink="/home/register">
+      <strong>
+        <ins>Register Now</ins>
+      </strong>
+    </a>
+  </h5>
 </div>
