@@ -13,9 +13,6 @@ export class AppComponent {
   title = 'app';
 
   constructor(auth: AuthService) {
-    console.log(auth.getLoggedInStatus());
-    auth.setLoggedInStatus(true);
-    console.log(auth.getLoggedInStatus());
   }
 
 }
