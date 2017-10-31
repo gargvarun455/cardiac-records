@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,26 +10,22 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   authResponse: any = { username: '', authenticated: '' };
-  private router;
 
-  constructor(private authService: AuthService, router: Router) {
-    this.router = router;
-  }
+  constructor(private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit() {
   }
 
   userLogin() {
-    console.log('test');
     this.authService.authenticateUser('varun', 'garg')
       .subscribe((res) => this.authResponse = res,
       (err) => console.log(err),
       () => {
-        console.log(this.authResponse)
+        if (this.authResponse.authenticated) {
+          this.router.navigate(['/dashboard']);
+        }
       });
-    /* if (this.authResponse.authenticated == true) {
-      this.router.navigate('dashboard');
-    } */
   }
 
 }

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
-import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +11,7 @@ import { AuthService } from './auth.service';
 export class AppComponent {
   title = 'app';
 
-  constructor(auth: AuthService) {
+  constructor() {
   }
 
 }
