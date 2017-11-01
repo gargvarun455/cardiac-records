@@ -7,5 +7,9 @@
     },
     "hashing": {
         "salt_factor": 11
+    },
+    "crypto": {
+        "secret_key": "cardiac-records-key"
     }
+
 }

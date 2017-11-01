@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt');
-var config = require('../../config/config')
+var config = require('../../config/config');
 
 //Create schema and model
 var UserSchema = new Schema({

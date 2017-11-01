@@ -2,6 +2,8 @@ var userSchema = require('../models/userModel');
 var bcrypt = require('bcrypt');
 var authResponse = require('../models/authResponseModel');
 var errorResponse = require('../models/errorResponseModel');
+var CryptoJS = require("crypto-js");
+var config = require('../../config/config');
 
 module.exports = (router) => {
 
@@ -24,7 +26,10 @@ module.exports = (router) => {
 
     router.post('/authUser', function (req, res, next) {
         reqUsername = req.body.username;
-        reqPassword = req.body.password;
+        reqPassword = CryptoJS.AES.decrypt(req.body.password, 
+                                           config.crypto.secret_key)
+                                  .toString(CryptoJS.enc.Utf8)
+        console.log(reqPassword);
         if (reqUsername === '' || reqPassword === '') {
             errorResponse.errorCode = '400';
             errorResponse.description = 'Username or password cannot be empty';

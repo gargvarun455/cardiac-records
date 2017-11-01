@@ -10,6 +10,7 @@ import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthService } from './services/auth.service';
+import { CryptoService } from './services/crypto.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
@@ -28,7 +29,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HttpModule,
     ReactiveFormsModule
   ],
-  providers: [ AuthService ],
+  providers: [ AuthService, CryptoService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
