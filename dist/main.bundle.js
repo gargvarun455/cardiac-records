@@ -378,9 +378,6 @@ var HomeComponent = (function () {
         this.router = router;
     }
     HomeComponent.prototype.ngOnInit = function () {
-        if (sessionStorage.authUser) {
-            this.router.navigate(['/']);
-        }
     };
     return HomeComponent;
 }());
