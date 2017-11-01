@@ -593,7 +593,7 @@ var AuthService = (function () {
     };
     AuthService.prototype.authenticateUser = function (username, password) {
         var request = { username: username, password: password };
-        return this.http.post('http://localhost:3000/api/authUser', request)
+        return this.http.post('/api/authUser', request)
             .map(function (res) { return res.json(); });
     };
     return AuthService;

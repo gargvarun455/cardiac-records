@@ -26,7 +26,7 @@ export class AuthService {
 
   authenticateUser(username: String, password: String) {
     var request = { username: username, password: password };
-    return this.http.post('http://localhost:3000/api/authUser', request)
+    return this.http.post('/api/authUser', request)
       .map((res: Response) => res.json());
   }
 
