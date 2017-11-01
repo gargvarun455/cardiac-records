@@ -6,15 +6,22 @@ import 'rxjs/add/operator/map';
 export class AuthService {
 
   private isLoggedIn = false;
+  private loggedInUser = "";
+  
 
   constructor(private http: Http) { }
 
   getLoggedInStatus(): boolean {
     return this.isLoggedIn;
   }
-
   setLoggedInStatus(status: boolean) {
     this.isLoggedIn = status;
+  }
+  getLoggedInUser(): string {
+    return this.loggedInUser
+  }
+  setLoggedInUser(username: string) {
+    this.loggedInUser = username;
   }
 
   authenticateUser(username: String, password: String) {

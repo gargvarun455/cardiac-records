@@ -1,34 +1,59 @@
-<form class="panel panel-primary login-form">
+<form class="panel panel-primary login-form" [formGroup]='loginForm' (ngSubmit)="userLogin(loginForm.value)">
   <h3 class="login-title">Login</h3>
   <div class="form-group">
-    <input required minlength="5" maxlength="15" pattern="[a-zA-Z][a-zA-Z0-9]+" ngModel #username="ngModel" name="username" type="username" class="form-control" id="username" placeholder="Username" (change)="log(username)">
-    <div class="alert alert-danger" *ngIf="username.touched && !username.valid">
-      <div *ngIf="username.errors.required">
+    <input 
+      type="text" 
+      formControlName="username" 
+      class="form-control" 
+      id="username" 
+      placeholder="Username">
+    <div
+      class="alert alert-danger" 
+      *ngIf="!loginForm.controls['username'].valid && loginForm.controls['username'].touched">
+      <div 
+        *ngIf="loginForm.controls['username'].errors.required">
         Username is required
       </div>
-      <div *ngIf="username.errors.minlength || username.errors.maxlength">
-        Username length should be between 5 and 15
+      <div 
+        *ngIf="loginForm.controls['username'].errors.minlength || loginForm.controls['username'].errors.maxlength">
+         Username length should be between 5 and 15
       </div>
-      <div *ngIf="username.errors.pattern">
+      <div 
+        *ngIf="loginForm.controls['username'].errors.pattern">
         Username pattern doesn't match
       </div>
     </div>
   </div>
   <div class="form-group">
-    <input required minlength="8" maxlength="15" ngModel #password="ngModel" name="password" type="password" class="form-control" id="password" placeholder="Password">
-    <div class="alert alert-danger" *ngIf="password.touched && !password.valid">
-      <div *ngIf="password.errors.required">
-        Username is required
+    <input 
+      type="password" 
+      formControlName="password" 
+      class="form-control" 
+      id="password" 
+      placeholder="Password">
+    <div 
+      class="alert alert-danger" 
+      *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched">
+      <div 
+        *ngIf="loginForm.controls['password'].errors.required">
+        Password is required
       </div>
-      <div *ngIf="password.errors.minlength || password.errors.maxlength">
-        Username length should be between 5 and 15
+      <div 
+        *ngIf="loginForm.controls['password'].errors.minlength || loginForm.controls['password'].errors.maxlength">
+        Password length should be between 8 and 15
       </div>
-      <div *ngIf="password.errors.pattern">
-        Username pattern doesn't match
+      <div 
+        *ngIf="loginForm.controls['password'].errors.pattern">
+        Password pattern doesn't match
       </div>
     </div>
   </div>
-  <button type="submit" class="btn btn-primary btn-lg btn-block button-login" (click)="userLogin()">Login</button>
+  <button 
+    [disabled]="!loginForm.valid" 
+    type="submit" 
+    class="btn btn-primary btn-lg btn-block button-login">
+    Login
+  </button>
 </form>
 <div class="text-center">
   <h5>Doesn't have an account?
