@@ -1,18 +1,90 @@
-<form class="panel panel-primary register-form">
-  <h3 class="font-weight-bold register-title">Register</h3>
+<form class="panel panel-primary register-form" [formGroup]='registerForm' (ngSubmit)="userRegister(registerForm.value)">
+  <h3 class="register-title">Register</h3>
   <div class="form-group">
-    <!-- <label for="username">Username</label> -->
-    <input type="username" class="form-control" id="username" placeholder="Username">
+    <label for="username">Username</label>
+    <input type="username" 
+           (change)="log(registerForm)"
+           formControlName="username" 
+           class="form-control" 
+           id="username">
+    <ol
+      class="alert alert-danger" 
+      *ngIf="!registerForm.controls['username'].valid && registerForm.controls['username'].touched">
+      <li class="error-text"
+        *ngIf="registerForm.controls['username'].errors.required">
+        Username is required
+      </li>
+      <li class="error-text"
+        *ngIf="registerForm.controls['username'].errors.minlength || registerForm.controls['username'].errors.maxlength">
+        Username length should be between 5 and 15
+      </li>
+      <li class="error-text"
+        *ngIf="registerForm.controls['username'].errors.pattern">
+        Username can contain only alphanumericals
+      </li>
+    </ol>
   </div>
   <div class="form-group">
-    <!-- <label for="pwd">Password</label> -->
-    <input type="password" class="form-control" id="pwd" placeholder="Password">
+    <label for="emailid">Email Id</label>
+    <input type="email" 
+           (change)="log(registerForm)"
+           formControlName="emailid" 
+           class="form-control" 
+           id="emailid">
+    <ol
+      class="alert alert-danger" 
+      *ngIf="!registerForm.controls['emailid'].valid && registerForm.controls['emailid'].touched">
+      <li class="error-text"
+        *ngIf="registerForm.controls['emailid'].errors.required">
+        Email Id is required
+      </li>
+      <li class="error-text"
+        *ngIf="registerForm.controls['emailid'].errors.email">
+        Invalid email address
+      </li>
+    </ol>
   </div>
   <div class="form-group">
-    <!-- <label for="pwd">Password</label> -->
-    <input type="password" class="form-control" id="con-pwd" placeholder="Confirm Password">
+    <label for="password">Password</label>
+    <input type="password" 
+           formControlName="password" 
+           class="form-control" 
+           id="password">
+    <ol class="alert alert-danger" 
+      *ngIf="!registerForm.controls['password'].valid && registerForm.controls['password'].touched">
+      <li class="error-text"
+        *ngIf="registerForm.controls['password'].errors.required">
+        Password is required
+      </li>
+      <li class="error-text"
+        *ngIf="registerForm.controls['password'].errors.minlength || registerForm.controls['password'].errors.maxlength">
+        Password length should be between 8 and 15
+      </li>
+      <li class="error-text"
+        *ngIf="registerForm.controls['password'].errors.pattern">
+        Password can contain alphanumericals or '@,#,!,%,^,&'
+      </li>
+    </ol>
   </div>
-  <button type="submit" class="btn btn-primary btn-lg btn-block button-register">Register</button>
+  <div class="form-group">
+    <label for="confirmpass">Confirm Password</label>
+    <input type="password" 
+           formControlName="confirmPass" 
+           class="form-control" 
+           id="confirmpass">
+    <ol class="alert alert-danger" 
+      *ngIf="!registerForm.controls['confirmPass'].valid && registerForm.controls['confirmPass'].touched">
+      <li class="error-text"
+        *ngIf="registerForm.controls['confirmPass'].errors.notEquivalent">
+        Passwords don't match
+      </li>
+    </ol>
+  </div>
+  <button [disabled]="!registerForm.valid" 
+          type="submit" 
+          class="btn btn-primary btn-lg btn-block button-register">
+          Register
+  </button>
 </form>
 <div class="text-center">
   <h5>Already have an account?

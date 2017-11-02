@@ -19,7 +19,8 @@ var UserSchema = new Schema({
         required: true,
         enum: ['USER','ADMIN'],
         default: 'USER'
-    }
+    },
+    
 });
 
 UserSchema.pre('save', function(next){

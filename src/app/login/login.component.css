@@ -5,12 +5,22 @@
 
 .login-title{
     text-align: center;
-    margin-bottom: 30px;  
+    margin-bottom: 10px;  
     font-size: 30px;
 }
 
-.form-group{
-    margin-bottom: 15px;
+label{
+    position: relative;
+    top: 15px;
+    left: 8px;
+    background: white;
+    padding: 0px 5px;
+    font-style: italic;
+    text-align: center;    
+}
+
+.form-group{    
+    margin-bottom: 0px;
 }
 
 .button-login{
@@ -19,7 +29,7 @@
 
 .button-register{
     margin: 25px 10px 10px 10px;
-    align: center;
+    align-self: center;
 }
 
 input{

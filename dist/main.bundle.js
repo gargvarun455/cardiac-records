@@ -409,7 +409,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".login-form{\n    padding: 0px 10px 10px;\n    margin-top: 20px;\n}\n\n.login-title{\n    text-align: center;\n    margin-bottom: 30px;  \n    font-size: 30px;\n}\n\n.form-group{\n    margin-bottom: 15px;\n}\n\n.button-login{\n    margin: 25px 0px 10px 0px;\n}\n\n.button-register{\n    margin: 25px 10px 10px 10px;\n    align: center;\n}\n\ninput{\n    height: 50px\n}\n\n.form-control.ng-touched.ng-invalid{\n    border: 2px solid red;\n}\n\n.form-control.ng-touched.ng-valid{\n    border: 2px solid green;\n}\n\n.error-text{\n    margin-left: 5px;\n}", ""]);
+exports.push([module.i, ".login-form{\n    padding: 0px 10px 10px;\n    margin-top: 20px;\n}\n\n.login-title{\n    text-align: center;\n    margin-bottom: 10px;  \n    font-size: 30px;\n}\n\nlabel{\n    position: relative;\n    top: 15px;\n    left: 8px;\n    background: white;\n    padding: 0px 5px;\n    font-style: italic;\n    text-align: center;    \n}\n\n.form-group{    \n    margin-bottom: 0px;\n}\n\n.button-login{\n    margin: 25px 0px 10px 0px;\n}\n\n.button-register{\n    margin: 25px 10px 10px 10px;\n    -ms-flex-item-align: center;\n        -ms-grid-row-align: center;\n        align-self: center;\n}\n\ninput{\n    height: 50px\n}\n\n.form-control.ng-touched.ng-invalid{\n    border: 2px solid red;\n}\n\n.form-control.ng-touched.ng-valid{\n    border: 2px solid green;\n}\n\n.error-text{\n    margin-left: 5px;\n}", ""]);
 
 // exports
 
@@ -422,7 +422,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<form class=\"panel panel-primary login-form\" [formGroup]='loginForm' (ngSubmit)=\"userLogin(loginForm.value)\">\n  <h3 class=\"login-title\">Login</h3>\n  <div class=\"form-group\">\n    <input \n      type=\"text\" \n      formControlName=\"username\" \n      class=\"form-control\" \n      id=\"username\" \n      placeholder=\"Username\">\n    <ol\n      class=\"alert alert-danger\" \n      *ngIf=\"!loginForm.controls['username'].valid && loginForm.controls['username'].touched\">\n      <li class=\"error-text\"\n        *ngIf=\"loginForm.controls['username'].errors.required\">\n        Username is required\n      </li>\n      <li class=\"error-text\"\n        *ngIf=\"loginForm.controls['username'].errors.minlength || loginForm.controls['username'].errors.maxlength\">\n         Username length should be between 5 and 15\n      </li>\n      <li class=\"error-text\"\n        *ngIf=\"loginForm.controls['username'].errors.pattern\">\n        Username can contain only alphanumericals\n      </li>\n    </ol>\n  </div>\n  <div class=\"form-group\">\n    <input \n      type=\"password\" \n      formControlName=\"password\" \n      class=\"form-control\" \n      id=\"password\" \n      placeholder=\"Password\">\n    <ol \n      class=\"alert alert-danger\" \n      *ngIf=\"!loginForm.controls['password'].valid && loginForm.controls['password'].touched\">\n      <li class=\"error-text\"\n        *ngIf=\"loginForm.controls['password'].errors.required\">\n        Password is required\n      </li>\n      <li class=\"error-text\"\n        *ngIf=\"loginForm.controls['password'].errors.minlength || loginForm.controls['password'].errors.maxlength\">\n        Password length should be between 8 and 15\n      </li>\n      <li class=\"error-text\"\n        *ngIf=\"loginForm.controls['password'].errors.pattern\">\n        Password can contain alphanumericals or '@,#,!,%,^,&'\n      </li>\n    </ol>\n  </div>\n  <button \n    [disabled]=\"!loginForm.valid\" \n    type=\"submit\" \n    class=\"btn btn-primary btn-lg btn-block button-login\">\n    Login\n  </button>\n</form>\n<div class=\"text-center\">\n  <h5>Doesn't have an account?\n    <a routerLink=\"/home/register\">\n      <strong>\n        <ins>Register Now</ins>\n      </strong>\n    </a>\n  </h5>\n</div>"
+module.exports = "<form class=\"panel panel-primary login-form\" [formGroup]='loginForm' (ngSubmit)=\"userLogin(loginForm.value)\">\n  <h3 class=\"login-title\">Login</h3>\n  <div class=\"form-group\">\n    <label for=\"username\">Username</label>\n    <input type=\"text\" \n      formControlName=\"username\" \n      class=\"form-control\" \n      id=\"username\">\n    <ol class=\"alert alert-danger\" \n      *ngIf=\"!loginForm.controls['username'].valid && loginForm.controls['username'].touched\">\n      <li class=\"error-text\"\n        *ngIf=\"loginForm.controls['username'].errors.required\">\n        Username is required\n      </li>\n      <li class=\"error-text\"\n        *ngIf=\"loginForm.controls['username'].errors.minlength || loginForm.controls['username'].errors.maxlength\">\n         Username length should be between 5 and 15\n      </li>\n      <li class=\"error-text\"\n        *ngIf=\"loginForm.controls['username'].errors.pattern\">\n        Username can contain only alphanumericals\n      </li>\n    </ol>\n  </div>\n  <div class=\"form-group\">    \n    <label for=\"password\">Password</label>\n    <input type=\"password\" \n      formControlName=\"password\" \n      class=\"form-control\" \n      id=\"password\">\n    <ol class=\"alert alert-danger\" \n      *ngIf=\"!loginForm.controls['password'].valid && loginForm.controls['password'].touched\">\n      <li class=\"error-text\"\n        *ngIf=\"loginForm.controls['password'].errors.required\">\n        Password is required\n      </li>\n      <li class=\"error-text\"\n        *ngIf=\"loginForm.controls['password'].errors.minlength || loginForm.controls['password'].errors.maxlength\">\n        Password length should be between 8 and 15\n      </li>\n      <li class=\"error-text\"\n        *ngIf=\"loginForm.controls['password'].errors.pattern\">\n        Password can contain alphanumericals or '@,#,!,%,^,&'\n      </li>\n    </ol>\n  </div>\n  <button [disabled]=\"!loginForm.valid\" \n    type=\"submit\" \n    class=\"btn btn-primary btn-lg btn-block button-login\">\n    Login\n  </button>\n</form>\n<div class=\"text-center\">\n  <h5>Doesn't have an account?\n    <a routerLink=\"/home/register\">\n      <strong>\n        <ins>Register Now</ins>\n      </strong>\n    </a>\n  </h5>\n</div>"
 
 /***/ }),
 
@@ -509,7 +509,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".register-form{\n    padding: 0px 10px 10px;\n    margin-top: 20px;\n}\n\n.register-title{\n    text-align: center;\n    margin-bottom: 30px;  \n    font-size: 30px;\n}\n\n.form-group{\n    margin-bottom: 15px;\n}\n\n.button-register{\n    margin: 25px 0px 10px 0px;\n}\n\ninput{\n    height: 50px\n}", ""]);
+exports.push([module.i, ".register-form{\n    padding: 0px 10px 10px;\n    margin-top: 20px;\n}\n\n.register-title{\n    text-align: center;\n    margin-bottom: 10px;  \n    font-size: 30px;\n}\n\nlabel{\n    position: relative;\n    top: 15px;\n    left: 8px;\n    background: white;\n    padding: 0px 5px;\n    font-style: italic;\n    text-align: center;    \n}\n\n.form-group{\n    margin-bottom: 0px;\n}\n\n.button-register{\n    margin: 25px 0px 10px 0px;\n}\n\ninput{\n    height: 50px\n}\n\n.error-text{\n    margin-left: 5px;\n}\n\n.form-control.ng-touched.ng-invalid{\n    border: 2px solid red;\n}\n\n.form-control.ng-touched.ng-valid{\n    border: 2px solid green;\n}", ""]);
 
 // exports
 
@@ -522,7 +522,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/register/register.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<form class=\"panel panel-primary register-form\">\n  <h3 class=\"font-weight-bold register-title\">Register</h3>\n  <div class=\"form-group\">\n    <!-- <label for=\"username\">Username</label> -->\n    <input type=\"username\" class=\"form-control\" id=\"username\" placeholder=\"Username\">\n  </div>\n  <div class=\"form-group\">\n    <!-- <label for=\"pwd\">Password</label> -->\n    <input type=\"password\" class=\"form-control\" id=\"pwd\" placeholder=\"Password\">\n  </div>\n  <div class=\"form-group\">\n    <!-- <label for=\"pwd\">Password</label> -->\n    <input type=\"password\" class=\"form-control\" id=\"con-pwd\" placeholder=\"Confirm Password\">\n  </div>\n  <button type=\"submit\" class=\"btn btn-primary btn-lg btn-block button-register\">Register</button>\n</form>\n<div class=\"text-center\">\n  <h5>Already have an account?\n    <strong>\n      <ins>\n        <a routerLink=\"/home/login\">Log In</a>\n      </ins>\n    </strong>\n  </h5>\n</div>"
+module.exports = "<form class=\"panel panel-primary register-form\" [formGroup]='registerForm' (ngSubmit)=\"userRegister(registerForm.value)\">\n  <h3 class=\"register-title\">Register</h3>\n  <div class=\"form-group\">\n    <label for=\"username\">Username</label>\n    <input type=\"username\" \n           (change)=\"log(registerForm)\"\n           formControlName=\"username\" \n           class=\"form-control\" \n           id=\"username\">\n    <ol\n      class=\"alert alert-danger\" \n      *ngIf=\"!registerForm.controls['username'].valid && registerForm.controls['username'].touched\">\n      <li class=\"error-text\"\n        *ngIf=\"registerForm.controls['username'].errors.required\">\n        Username is required\n      </li>\n      <li class=\"error-text\"\n        *ngIf=\"registerForm.controls['username'].errors.minlength || registerForm.controls['username'].errors.maxlength\">\n        Username length should be between 5 and 15\n      </li>\n      <li class=\"error-text\"\n        *ngIf=\"registerForm.controls['username'].errors.pattern\">\n        Username can contain only alphanumericals\n      </li>\n    </ol>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"emailid\">Email Id</label>\n    <input type=\"email\" \n           (change)=\"log(registerForm)\"\n           formControlName=\"emailid\" \n           class=\"form-control\" \n           id=\"emailid\">\n    <ol\n      class=\"alert alert-danger\" \n      *ngIf=\"!registerForm.controls['emailid'].valid && registerForm.controls['emailid'].touched\">\n      <li class=\"error-text\"\n        *ngIf=\"registerForm.controls['emailid'].errors.required\">\n        Email Id is required\n      </li>\n      <li class=\"error-text\"\n        *ngIf=\"registerForm.controls['emailid'].errors.email\">\n        Invalid email address\n      </li>\n    </ol>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"password\">Password</label>\n    <input type=\"password\" \n           formControlName=\"password\" \n           class=\"form-control\" \n           id=\"password\">\n    <ol class=\"alert alert-danger\" \n      *ngIf=\"!registerForm.controls['password'].valid && registerForm.controls['password'].touched\">\n      <li class=\"error-text\"\n        *ngIf=\"registerForm.controls['password'].errors.required\">\n        Password is required\n      </li>\n      <li class=\"error-text\"\n        *ngIf=\"registerForm.controls['password'].errors.minlength || registerForm.controls['password'].errors.maxlength\">\n        Password length should be between 8 and 15\n      </li>\n      <li class=\"error-text\"\n        *ngIf=\"registerForm.controls['password'].errors.pattern\">\n        Password can contain alphanumericals or '@,#,!,%,^,&'\n      </li>\n    </ol>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"confirmpass\">Confirm Password</label>\n    <input type=\"password\" \n           formControlName=\"confirmPass\" \n           class=\"form-control\" \n           id=\"confirmpass\">\n    <ol class=\"alert alert-danger\" \n      *ngIf=\"!registerForm.controls['confirmPass'].valid && registerForm.controls['confirmPass'].touched\">\n      <li class=\"error-text\"\n        *ngIf=\"registerForm.controls['confirmPass'].errors.notEquivalent\">\n        Passwords don't match\n      </li>\n    </ol>\n  </div>\n  <button [disabled]=\"!registerForm.valid\" \n          type=\"submit\" \n          class=\"btn btn-primary btn-lg btn-block button-register\">\n          Register\n  </button>\n</form>\n<div class=\"text-center\">\n  <h5>Already have an account?\n    <strong>\n      <ins>\n        <a routerLink=\"/home/login\">Log In</a>\n      </ins>\n    </strong>\n  </h5>\n</div>"
 
 /***/ }),
 
@@ -532,6 +532,9 @@ module.exports = "<form class=\"panel panel-primary register-form\">\n  <h3 clas
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegisterComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_crypto_service__ = __webpack_require__("../../../../../src/app/services/crypto.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -542,10 +545,46 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+
 var RegisterComponent = (function () {
-    function RegisterComponent() {
+    function RegisterComponent(crypto, router, fb) {
+        this.crypto = crypto;
+        this.router = router;
+        this.fb = fb;
+        this.registerForm = fb.group({
+            'username': [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["d" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_3__angular_forms__["d" /* Validators */].required,
+                    __WEBPACK_IMPORTED_MODULE_3__angular_forms__["d" /* Validators */].minLength(5),
+                    __WEBPACK_IMPORTED_MODULE_3__angular_forms__["d" /* Validators */].maxLength(15),
+                    __WEBPACK_IMPORTED_MODULE_3__angular_forms__["d" /* Validators */].pattern("[a-zA-Z][a-zA-Z0-9]+")])],
+            'password': [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["d" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_3__angular_forms__["d" /* Validators */].required,
+                    __WEBPACK_IMPORTED_MODULE_3__angular_forms__["d" /* Validators */].minLength(4),
+                    __WEBPACK_IMPORTED_MODULE_3__angular_forms__["d" /* Validators */].maxLength(15),
+                    __WEBPACK_IMPORTED_MODULE_3__angular_forms__["d" /* Validators */].pattern("[a-zA-Z0-9@#!%^&]+")])],
+            'confirmPass': [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["d" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_3__angular_forms__["d" /* Validators */].required,
+                    __WEBPACK_IMPORTED_MODULE_3__angular_forms__["d" /* Validators */].minLength(4),
+                    __WEBPACK_IMPORTED_MODULE_3__angular_forms__["d" /* Validators */].maxLength(15),
+                    __WEBPACK_IMPORTED_MODULE_3__angular_forms__["d" /* Validators */].pattern("[a-zA-Z0-9@#!%^&]+")])],
+            'emailid': [null, __WEBPACK_IMPORTED_MODULE_3__angular_forms__["d" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_3__angular_forms__["d" /* Validators */].required,
+                    __WEBPACK_IMPORTED_MODULE_3__angular_forms__["d" /* Validators */].email])]
+        }, { validator: this.matchPasswords('password', 'confirmPass') });
     }
     RegisterComponent.prototype.ngOnInit = function () {
+    };
+    RegisterComponent.prototype.matchPasswords = function (password, confirmPass) {
+        return function (group) {
+            var passwordInput = group.controls[password], confirmPassInput = group.controls[confirmPass];
+            if (passwordInput.value !== confirmPassInput.value) {
+                return confirmPassInput.setErrors({ notEquivalent: true });
+            }
+            else {
+                return confirmPassInput.setErrors(null);
+            }
+        };
+    };
+    RegisterComponent.prototype.log = function (x) {
+        console.log(x);
     };
     return RegisterComponent;
 }());
@@ -555,9 +594,10 @@ RegisterComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/register/register.component.html"),
         styles: [__webpack_require__("../../../../../src/app/register/register.component.css")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_crypto_service__["a" /* CryptoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_crypto_service__["a" /* CryptoService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormBuilder */]) === "function" && _c || Object])
 ], RegisterComponent);
 
+var _a, _b, _c;
 //# sourceMappingURL=register.component.js.map
 
 /***/ }),

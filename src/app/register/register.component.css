@@ -5,12 +5,22 @@
 
 .register-title{
     text-align: center;
-    margin-bottom: 30px;  
+    margin-bottom: 10px;  
     font-size: 30px;
 }
 
+label{
+    position: relative;
+    top: 15px;
+    left: 8px;
+    background: white;
+    padding: 0px 5px;
+    font-style: italic;
+    text-align: center;    
+}
+
 .form-group{
-    margin-bottom: 15px;
+    margin-bottom: 0px;
 }
 
 .button-register{
@@ -19,4 +29,16 @@
 
 input{
     height: 50px
+}
+
+.error-text{
+    margin-left: 5px;
+}
+
+.form-control.ng-touched.ng-invalid{
+    border: 2px solid red;
+}
+
+.form-control.ng-touched.ng-valid{
+    border: 2px solid green;
 }

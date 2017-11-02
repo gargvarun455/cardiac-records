@@ -1,14 +1,12 @@
 <form class="panel panel-primary login-form" [formGroup]='loginForm' (ngSubmit)="userLogin(loginForm.value)">
   <h3 class="login-title">Login</h3>
   <div class="form-group">
-    <input 
-      type="text" 
+    <label for="username">Username</label>
+    <input type="text" 
       formControlName="username" 
       class="form-control" 
-      id="username" 
-      placeholder="Username">
-    <ol
-      class="alert alert-danger" 
+      id="username">
+    <ol class="alert alert-danger" 
       *ngIf="!loginForm.controls['username'].valid && loginForm.controls['username'].touched">
       <li class="error-text"
         *ngIf="loginForm.controls['username'].errors.required">
@@ -24,15 +22,13 @@
       </li>
     </ol>
   </div>
-  <div class="form-group">
-    <input 
-      type="password" 
+  <div class="form-group">    
+    <label for="password">Password</label>
+    <input type="password" 
       formControlName="password" 
       class="form-control" 
-      id="password" 
-      placeholder="Password">
-    <ol 
-      class="alert alert-danger" 
+      id="password">
+    <ol class="alert alert-danger" 
       *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched">
       <li class="error-text"
         *ngIf="loginForm.controls['password'].errors.required">
@@ -48,8 +44,7 @@
       </li>
     </ol>
   </div>
-  <button 
-    [disabled]="!loginForm.valid" 
+  <button [disabled]="!loginForm.valid" 
     type="submit" 
     class="btn btn-primary btn-lg btn-block button-login">
     Login

@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { CryptoService } from '../services/crypto.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+declare var jquery:any;
+declare var $ :any;
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
