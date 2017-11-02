@@ -422,7 +422,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<form class=\"panel panel-primary login-form\" [formGroup]='loginForm' (ngSubmit)=\"userLogin(loginForm.value)\">\n  <h3 class=\"login-title\">Login</h3>\n  <div class=\"form-group\">\n    <label for=\"username\">Username</label>\n    <input type=\"text\" \n      formControlName=\"username\" \n      class=\"form-control\" \n      id=\"username\">\n    <ol class=\"alert alert-danger\" \n      *ngIf=\"!loginForm.controls['username'].valid && loginForm.controls['username'].touched\">\n      <li class=\"error-text\"\n        *ngIf=\"loginForm.controls['username'].errors.required\">\n        Username is required\n      </li>\n      <li class=\"error-text\"\n        *ngIf=\"loginForm.controls['username'].errors.minlength || loginForm.controls['username'].errors.maxlength\">\n         Username length should be between 5 and 15\n      </li>\n      <li class=\"error-text\"\n        *ngIf=\"loginForm.controls['username'].errors.pattern\">\n        Username can contain only alphanumericals\n      </li>\n    </ol>\n  </div>\n  <div class=\"form-group\">    \n    <label for=\"password\">Password</label>\n    <input type=\"password\" \n      formControlName=\"password\" \n      class=\"form-control\" \n      id=\"password\">\n    <ol class=\"alert alert-danger\" \n      *ngIf=\"!loginForm.controls['password'].valid && loginForm.controls['password'].touched\">\n      <li class=\"error-text\"\n        *ngIf=\"loginForm.controls['password'].errors.required\">\n        Password is required\n      </li>\n      <li class=\"error-text\"\n        *ngIf=\"loginForm.controls['password'].errors.minlength || loginForm.controls['password'].errors.maxlength\">\n        Password length should be between 8 and 15\n      </li>\n      <li class=\"error-text\"\n        *ngIf=\"loginForm.controls['password'].errors.pattern\">\n        Password can contain alphanumericals or '@,#,!,%,^,&'\n      </li>\n    </ol>\n  </div>\n  <button [disabled]=\"!loginForm.valid\" \n    type=\"submit\" \n    class=\"btn btn-primary btn-lg btn-block button-login\">\n    Login\n  </button>\n</form>\n<div class=\"text-center\">\n  <h5>Doesn't have an account?\n    <a routerLink=\"/home/register\">\n      <strong>\n        <ins>Register Now</ins>\n      </strong>\n    </a>\n  </h5>\n</div>"
+module.exports = "<form class=\"panel panel-primary login-form\" [formGroup]='loginForm' (ngSubmit)=\"userLogin(loginForm.value)\">\n  <h3 class=\"login-title\">Login</h3>\n  <div class=\"alert alert-danger\"\n       *ngIf=\"authFailed\">\n     Invalid username or password\n  </div>\n  <div class=\"form-group\">\n    <label for=\"username\">Username</label>\n    <input type=\"text\" \n      (change)=\"log(loginForm)\"\n      formControlName=\"username\" \n      class=\"form-control\" \n      id=\"username\">\n    <ol class=\"alert alert-danger\" \n      *ngIf=\"!loginForm.controls['username'].valid && loginForm.controls['username'].touched\">\n      <li class=\"error-text\"\n        *ngIf=\"loginForm.controls['username'].errors.required\">\n        Username is required\n      </li>\n      <li class=\"error-text\"\n        *ngIf=\"loginForm.controls['username'].errors.minlength || loginForm.controls['username'].errors.maxlength\">\n         Username length should be between 5 and 15\n      </li>\n      <li class=\"error-text\"\n        *ngIf=\"loginForm.controls['username'].errors.pattern\">\n        Username can contain only alphanumericals\n      </li>\n    </ol>\n  </div>\n  <div class=\"form-group\">    \n    <label for=\"password\">Password</label>\n    <input type=\"password\" \n      formControlName=\"password\" \n      class=\"form-control\" \n      id=\"password\">\n    <ol class=\"alert alert-danger\" \n      *ngIf=\"!loginForm.controls['password'].valid && loginForm.controls['password'].touched\">\n      <li class=\"error-text\"\n        *ngIf=\"loginForm.controls['password'].errors.required\">\n        Password is required\n      </li>\n      <li class=\"error-text\"\n        *ngIf=\"loginForm.controls['password'].errors.minlength || loginForm.controls['password'].errors.maxlength\">\n        Password length should be between 8 and 15\n      </li>\n      <li class=\"error-text\"\n        *ngIf=\"loginForm.controls['password'].errors.pattern\">\n        Password can contain alphanumericals or '@,#,!,%,^,&'\n      </li>\n    </ol>\n  </div>\n  <button [disabled]=\"!loginForm.valid\" \n    type=\"submit\" \n    class=\"btn btn-primary btn-lg btn-block button-login\">\n    Login\n  </button>\n</form>\n<div class=\"text-center\">\n  <h5>Doesn't have an account?\n    <a routerLink=\"/home/register\">\n      <strong>\n        <ins>Register Now</ins>\n      </strong>\n    </a>\n  </h5>\n</div>"
 
 /***/ }),
 
@@ -459,6 +459,7 @@ var LoginComponent = (function () {
         this.authResponse = { username: '', authenticated: '' };
         this.description = "";
         this.name = "";
+        this.authFailed = false;
         this.loginForm = fb.group({
             'username': [null, __WEBPACK_IMPORTED_MODULE_4__angular_forms__["d" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_4__angular_forms__["d" /* Validators */].required,
                     __WEBPACK_IMPORTED_MODULE_4__angular_forms__["d" /* Validators */].minLength(5),
@@ -474,11 +475,17 @@ var LoginComponent = (function () {
     };
     LoginComponent.prototype.userLogin = function (form) {
         var _this = this;
+        this.authFailed = false;
         this.authService.authenticateUser(form.username, form.password)
             .subscribe(function (res) { return _this.authResponse = res; }, function (err) { return console.log(err); }, function () {
             if (_this.authResponse.authenticated) {
                 sessionStorage.auth = _this.crypto.encrypt(form.username);
                 _this.router.navigate(['/dashboard']);
+            }
+            else {
+                _this.authFailed = true;
+                _this.loginForm.reset();
+                //this.loginForm.controls['username'].setValue("");
             }
         });
     };

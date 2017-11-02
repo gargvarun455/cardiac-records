@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   post: any;
   description: string = "";
   name: string = "";
+  authFailed = false;
 
   constructor(private crypto: CryptoService, 
               private authService: AuthService,
@@ -42,6 +43,7 @@ export class LoginComponent implements OnInit {
   }
 
   userLogin(form) {
+    this.authFailed = false;
     this.authService.authenticateUser(form.username, form.password)
       .subscribe((res) => this.authResponse = res,
       (err) => console.log(err),
@@ -49,6 +51,11 @@ export class LoginComponent implements OnInit {
         if (this.authResponse.authenticated) {
           sessionStorage.auth = this.crypto.encrypt(form.username);
           this.router.navigate(['/dashboard']);
+        }
+        else{
+          this.authFailed = true;
+          this.loginForm.reset();
+          //this.loginForm.controls['username'].setValue("");
         }
       });
   }
