@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { CryptoService } from '../services/crypto.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -16,8 +17,10 @@ export class LoginComponent implements OnInit {
   description: string = "";
   name: string = "";
 
-  constructor(private authService: AuthService,
-    private router: Router, private fb: FormBuilder) {
+  constructor(private crypto: CryptoService, 
+              private authService: AuthService,
+              private router: Router, 
+              private fb: FormBuilder) {
     this.loginForm = fb.group({
       'username': [null, Validators.compose(
         [Validators.required,
@@ -41,7 +44,7 @@ export class LoginComponent implements OnInit {
       (err) => console.log(err),
       () => {
         if (this.authResponse.authenticated) {
-          sessionStorage.authUser = form.username;
+          sessionStorage.auth = this.crypto.encrypt(form.username);
           this.router.navigate(['/dashboard']);
         }
       });

@@ -7,22 +7,22 @@
       class="form-control" 
       id="username" 
       placeholder="Username">
-    <div
+    <ol
       class="alert alert-danger" 
       *ngIf="!loginForm.controls['username'].valid && loginForm.controls['username'].touched">
-      <div 
+      <li class="error-text"
         *ngIf="loginForm.controls['username'].errors.required">
         Username is required
-      </div>
-      <div 
+      </li>
+      <li class="error-text"
         *ngIf="loginForm.controls['username'].errors.minlength || loginForm.controls['username'].errors.maxlength">
          Username length should be between 5 and 15
-      </div>
-      <div 
+      </li>
+      <li class="error-text"
         *ngIf="loginForm.controls['username'].errors.pattern">
-        Username pattern doesn't match
-      </div>
-    </div>
+        Username can contain only alphanumericals
+      </li>
+    </ol>
   </div>
   <div class="form-group">
     <input 
@@ -31,22 +31,22 @@
       class="form-control" 
       id="password" 
       placeholder="Password">
-    <div 
+    <ol 
       class="alert alert-danger" 
       *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched">
-      <div 
+      <li class="error-text"
         *ngIf="loginForm.controls['password'].errors.required">
         Password is required
-      </div>
-      <div 
+      </li>
+      <li class="error-text"
         *ngIf="loginForm.controls['password'].errors.minlength || loginForm.controls['password'].errors.maxlength">
         Password length should be between 8 and 15
-      </div>
-      <div 
+      </li>
+      <li class="error-text"
         *ngIf="loginForm.controls['password'].errors.pattern">
-        Password pattern doesn't match
-      </div>
-    </div>
+        Password can contain alphanumericals or '@,#,!,%,^,&'
+      </li>
+    </ol>
   </div>
   <button 
     [disabled]="!loginForm.valid" 

@@ -33,3 +33,7 @@ input{
 .form-control.ng-touched.ng-valid{
     border: 2px solid green;
 }
+
+.error-text{
+    margin-left: 5px;
+}

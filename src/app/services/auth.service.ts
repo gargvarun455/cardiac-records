@@ -33,5 +33,4 @@ export class AuthService {
     return this.http.post('/api/authUser', request)
       .map((res: Response) => res.json());
   }
-
 }

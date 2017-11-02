@@ -11,4 +11,8 @@ export class CryptoService {
     return CryptoJS.AES.encrypt(myString, environment.secret_key).toString();
   }
 
+  decrypt(encryptedString: string): string{
+    return CryptoJS.AES.decrypt(encryptedString, environment.secret_key).toString(CryptoJS.enc.Utf8);
+  }
+
 }

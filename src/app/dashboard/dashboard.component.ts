@@ -2,7 +2,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import * as CryptoJS from 'crypto-js';
+import { CryptoService } from '../services/crypto.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,19 +11,18 @@ import * as CryptoJS from 'crypto-js';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  username: string;
+
+  constructor(private crypto: CryptoService, 
+              private router: Router) { }
 
   ngOnInit() {
-    if (!sessionStorage.authUser) {
+    if (!sessionStorage.auth) {
       this.router.navigate(['/']);
     }
-    var myString = "https://www.titanesmedellin.com/";
-    var myPassword = "myPassword";
-    var encrypted = CryptoJS.AES.encrypt(myString, myPassword);
-    var decrypted = CryptoJS.AES.decrypt(encrypted, myPassword);
-    console.log('Encrypted :' + encrypted);
-    console.log('Decrypted : ' + decrypted.toString(CryptoJS.enc.Utf8));
-
+    else{
+      this.username = this.crypto.decrypt(sessionStorage.getItem("auth"));
+    }
   }
 
 
