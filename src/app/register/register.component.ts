@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 import { CryptoService } from '../services/crypto.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -10,9 +11,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
+  user: any;
   registerForm: FormGroup;
 
   constructor(private crypto: CryptoService,
+    private authService: AuthService,
     private router: Router,
     private fb: FormBuilder) {
     this.registerForm = fb.group({
@@ -38,6 +41,16 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  verifyUsername() {
+    this.authService
+      .verifyUsername(this.registerForm.controls['username'].value)
+      .subscribe((res) => this.user = res,
+      (err) => console.log(err),
+      () => {
+        console.log(this.user);
+      });
   }
 
   matchPasswords(password: string, confirmPass: string) {

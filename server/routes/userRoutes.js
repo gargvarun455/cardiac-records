@@ -13,6 +13,13 @@ module.exports = (router) => {
         });
     });
 
+    router.get('/user/:username', (req, res, next) => {
+        userSchema.find({ username: req.params.username })
+                  .then((user, err) => {
+            res.send(user);
+        });
+    });
+
     router.post('/user', function (req, res, next) {
         userSchema.create(req.body).then((user, err) => {
             if (err) {

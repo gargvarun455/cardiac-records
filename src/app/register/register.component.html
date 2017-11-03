@@ -3,8 +3,8 @@
   <div class="form-group">
     <label for="username">Username</label>
     <input type="username" 
-           (change)="log(registerForm)"
-           formControlName="username" 
+           formControlName="username" e
+           (change)="verifyUsername()"
            class="form-control" 
            id="username">
     <ol
@@ -40,7 +40,7 @@
       </li>
       <li class="error-text"
         *ngIf="registerForm.controls['emailid'].errors.email">
-        Invalid email address
+        Invalid email id
       </li>
     </ol>
   </div>

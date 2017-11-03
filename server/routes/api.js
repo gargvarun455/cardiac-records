@@ -4,7 +4,7 @@ var router = express.Router();
 require('./userRoutes')(router);
 
 router.get('/', (req, res, next) => {
-    res.send('sample respopnse');
+    res.send('sample response');
 });
 
 module.exports = router;

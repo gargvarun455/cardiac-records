@@ -42,3 +42,7 @@ input{
 .form-control.ng-touched.ng-valid{
     border: 2px solid green;
 }
+
+.alert{
+    margin-bottom: 0px;
+}
