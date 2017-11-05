@@ -45,17 +45,14 @@ module.exports = (router) => {
         }
         else {
             userSchema.findOne({ username: reqUsername }).then((user) => {
+                authResponse.username = req.body.username;
                 if (user == null) {
-                    errorResponse.errorCode = '404';
-                    errorResponse.description = 'User not found';
-                    res.status(404);
-                    res.send(errorResponse);
+                    authResponse.authenticated = false;
                 }
                 else {
-                    authResponse.authenticated = user.comparePassword(reqPassword);
-                    authResponse.username = req.body.username;
-                    res.send(authResponse);
+                    authResponse.authenticated = user.comparePassword(reqPassword);                    
                 }
+                res.send(authResponse);
             });
         }
     });
